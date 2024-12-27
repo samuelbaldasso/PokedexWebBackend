@@ -17,6 +17,7 @@
     "axios-cache-interceptor": "^1.6.2",
     "cors": "^2.8.5",
     "express": "^4.21.2",
+    "pokedex-backend": "file:",
     "pokenode-ts": "^1.20.0"
   },
   "devDependencies": {

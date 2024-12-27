@@ -10,7 +10,7 @@ app.use(cors({
   origin: '*',
 }));
 
-app.get('/pokemon/:name', async (req, res) => {
+app.get('/pokemon/:name', async (req: any, res: any) => {
   try {
     const pokemon = await api.getPokemonByName(req.params.name);
     res.json(pokemon);
@@ -19,7 +19,7 @@ app.get('/pokemon/:name', async (req, res) => {
   }
 });
 
-app.get('/pokemon', async (req, res) => {
+app.get('/pokemon', async (req: any, res: any) => {
     try {
       const pokemonList = await api.listPokemons(0, 1302);
       res.json(pokemonList.results);
@@ -28,7 +28,7 @@ app.get('/pokemon', async (req, res) => {
     }
 });
 
-app.get('/pokemon/:id', async (req, res) => {
+app.get('/pokemon/:id', async (req: any, res: any) => {
   try {
     const pokemon = await api.getPokemonById(req.params.id);
     res.json(pokemon);
