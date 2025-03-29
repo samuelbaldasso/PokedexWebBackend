@@ -43,13 +43,13 @@ Certifique-se de ter instalado:
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/samuelbaldasso/Pokedex-TypeScript-NodeJS-Express-CORS-PokeAPI.git
+git clone https://github.com/samuelbaldasso/PokedexWebBackend.git
 ```
 
 ### 2. Acesse o diretório do projeto
 
 ```bash
-cd Pokedex-TypeScript-NodeJS-Express-CORS-PokeAPI
+cd PokedexWebBackend
 ```
 
 ### 3. Instale as dependências
