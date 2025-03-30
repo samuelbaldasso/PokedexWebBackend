@@ -1,40 +1,21 @@
-const express = require('express');
-const { PokemonClient } = require('pokenode-ts');
-const cors = require('cors');
+import express, { NextFunction, Request, Response } from "express";
+import cors from "cors";
+import pokemonRoute from "./routes/pokemon-route";
 
 const app = express();
 const port = process.env.PORT || 3000;
-const api = new PokemonClient();
 
 app.use(cors({
   origin: '*',
 }));
 
-app.get('/pokemon/:name', async (req: any, res: any) => {
-  try {
-    const pokemon = await api.getPokemonByName(req.params.name);
-    res.json(pokemon);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
+app.use(express.json());
 
-app.get('/pokemon', async (req: any, res: any) => {
-    try {
-      const pokemonList = await api.listPokemons(0, 1302);
-      res.json(pokemonList.results);
-    } catch (error) {
-      res.status(500).json({ error: 'Failed to fetch Pokémon list' });
-    }
-});
+app.use('/api', pokemonRoute);
 
-app.get('/pokemon/:id', async (req: any, res: any) => {
-  try {
-    const pokemon = await api.getPokemonById(req.params.id);
-    res.json(pokemon);
-  } catch (error) {
-    res.status(500).send(error);
-  }
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
 });
 
 app.listen(port, () => {
